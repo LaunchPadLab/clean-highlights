@@ -1,0 +1,6 @@
+body {
+  font-family: 'Noto Serif', serif;
+}
+
+::-moz-selection { background: #FFFF00; }
+::selection { background: #FFFF00; }
