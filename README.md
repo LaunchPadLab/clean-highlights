@@ -6,3 +6,5 @@ Checkout `/samples` for sample exports
 
 * Kindle device exports to CSV.
 * iPhone exports to HTML.
+
+Deploy via Surge `http://clean-highlights.surge.sh/`
