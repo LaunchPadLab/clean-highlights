@@ -28,7 +28,6 @@ $(document).ready(function() {
         var csvData = event.target.result;
         data = $.csv.toArrays(csvData);
         if (data && data.length > 0) {
-          alert('Imported -' + data.length + '- rows successfully!');
 
           $.each(data, function(index, value) {
             if (index === 1) {
@@ -42,9 +41,6 @@ $(document).ready(function() {
             };
           });
 
-        console.log(data);
-
-
         } else {
           alert('No data to import!');
         }
@@ -55,12 +51,11 @@ $(document).ready(function() {
     }
 
     $('#submit').on('click', function() {
-      console.log(highlights);
       var formattedTitle = title.join('\r\n\n');
       var formattedAuthor = author.join('\r\n\n');
       var formattedHighlights = highlights.join('\r\n\n');
       var blob = new Blob([formattedTitle, formattedAuthor, '\r\n\n', formattedHighlights], {type: "text/plain;charset=utf-8"});
-      saveAs(blob, "highlights.txt");
+      saveAs(blob, formattedTitle + ".txt");
     });
 
   }

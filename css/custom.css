@@ -2,5 +2,33 @@ body {
   font-family: 'Noto Serif', serif;
 }
 
+.column {
+  margin-top: 15%;
+  margin-bottom: 15%;
+}
+
+button.button-primary {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+button.button-primary:hover {
+  background-color: #43A047;
+  border-color: #43A047;
+}
+
+button.button-primary:focus {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
 ::-moz-selection { background: #FFFF00; }
 ::selection { background: #FFFF00; }
+
+.footer {
+  text-align: center;
+}
+
+.logo {
+  width: 200px;
+}
