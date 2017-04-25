@@ -23,29 +23,43 @@ $(document).ready(function() {
       var data = null;
       var file = evt.target.files[0];
       var reader = new FileReader();
-      reader.readAsText(file);
-      reader.onload = function(event) {
-        var csvData = event.target.result;
-        data = $.csv.toArrays(csvData);
-        if (data && data.length > 0) {
 
-          $.each(data, function(index, value) {
-            if (index === 1) {
-              title.push(value[0]);
-            };
-            if (index === 2) {
-              title.push(value[0]);
-            };
-            if (index > 8) {
-              highlights.push(value[3]);
-            };
+      if (file.type == 'text/csv') {
+        reader.readAsText(file);
+        reader.onload = function(event) {
+          var csvData = event.target.result;
+
+          data = $.csv.toArrays(csvData);
+          if (data && data.length > 0) {
+            $.each(data, function(index, value) {
+              if (index === 1) {
+                title.push(value[0]);
+              };
+              if (index === 2) {
+                title.push(value[0]);
+              };
+              if (index > 8) {
+                highlights.push(value[3]);
+              };
+            });
+          } else {
+            alert('No data to import!');
+          }
+        }
+
+      } else if (file.type == 'text/html') {
+        reader.readAsText(file);
+        reader.onload = function(event) {
+          var htmlData = event.target.result;
+          title.push($(htmlData).find('.bookTitle').text().trim());
+          author.push($(htmlData).find('.authors').text().trim());
+          $(htmlData).find('.noteText').each(function(){
+            highlights.push(this.textContent.trim());
           });
-
-        } else {
-          alert('No data to import!');
         }
       };
-      reader.onerror = function() {
+
+     reader.onerror = function() {
         alert('Unable to read ' + file.fileName);
       };
     }
@@ -54,8 +68,9 @@ $(document).ready(function() {
       var formattedTitle = title.join('\r\n\n');
       var formattedAuthor = author.join('\r\n\n');
       var formattedHighlights = highlights.join('\r\n\n');
-      var blob = new Blob([formattedTitle, formattedAuthor, '\r\n\n', formattedHighlights], {type: "text/plain;charset=utf-8"});
+      var blob = new Blob([formattedTitle, '\r', formattedAuthor, '\r\n\n', formattedHighlights], {type: "text/plain;charset=utf-8"});
       saveAs(blob, formattedTitle + ".txt");
+      $('#uploadForm').reset();
     });
 
   }
