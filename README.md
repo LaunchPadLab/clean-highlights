@@ -7,4 +7,4 @@ Checkout `/samples` for sample exports
 * Kindle device exports to CSV.
 * iPhone exports to HTML.
 
-Deploy via Surge `http://clean-highlights.surge.sh/`
+Deploy via Netlify `dazzling-joliot-02f796.netlify.com`
