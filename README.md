@@ -8,3 +8,5 @@ Checkout `/samples` for sample exports
 * iPhone exports to HTML.
 
 Deploy via Netlify `dazzling-joliot-02f796.netlify.com`
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dc67a461-e036-40a2-a7c2-485d338e532b/deploy-status)](https://app.netlify.com/sites/dazzling-joliot-02f796/deploys)
